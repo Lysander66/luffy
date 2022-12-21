@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+import 'app/binding/binding.dart';
 import 'app/routes/app_pages.dart';
 
 Future<void> main() async {
@@ -12,6 +13,7 @@ Future<void> main() async {
       initialRoute: AppPages.INITIAL,
       debugShowCheckedModeBanner: false,
       getPages: AppPages.routes,
+      initialBinding: InitialBinding(),
     ),
   );
 }

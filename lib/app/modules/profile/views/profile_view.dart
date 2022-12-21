@@ -1,17 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:luffy/util/logger/log.dart';
 
 import '../controllers/profile_controller.dart';
 
-class ProfileView extends GetView<ProfileController> {
-  const ProfileView({Key? key}) : super(key: key);
+class ProfileView extends StatelessWidget {
+  const ProfileView({super.key});
+
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<ProfileController>();
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: const Text('Navigation Drawer'),
         backgroundColor: const Color(0xff764abc),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  controller.foo();
+                },
+                child: Text('点击')),
+            SizedBox(
+              height: 50,
+            ),
+          ],
+        ),
       ),
       drawer: Container(
         width: MediaQuery.of(context).size.width * 0.7,
@@ -71,15 +89,6 @@ class ProfileView extends GetView<ProfileController> {
               ),
             ],
           ),
-        ),
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 50,
-            ),
-          ],
         ),
       ),
     );
