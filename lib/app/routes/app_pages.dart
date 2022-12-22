@@ -11,20 +11,20 @@ class AppPages {
 
   static final routes = [
     GetPage(
-      name: _Paths.HOME,
-      page: () => const HomeView(),
-    ),
-    GetPage(
       name: _Paths.SPLASH,
       page: () => const SplashScreen(),
     ),
     GetPage(
-      name: _Paths.PROFILE,
-      page: () => const ProfileView(),
+      name: _Paths.HOME,
+      page: () => const HomeView(),
     ),
     GetPage(
       name: _Paths.LIVE,
       page: () => const LiveView(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE,
+      page: () => const ProfileView(),
     ),
   ];
 }

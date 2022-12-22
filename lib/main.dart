@@ -4,6 +4,8 @@ import 'package:get_storage/get_storage.dart';
 
 import 'app/binding/binding.dart';
 import 'app/routes/app_pages.dart';
+import 'generated/locales.g.dart';
+import 'util/keyboard.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,10 +14,22 @@ Future<void> main() async {
   runApp(
     GetMaterialApp(
       title: "Application",
-      initialRoute: AppPages.INITIAL,
       debugShowCheckedModeBanner: false,
+      initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       initialBinding: InitialBinding(),
+      translationsKeys: AppTranslation.translations,
+      locale: Get.deviceLocale,
+      fallbackLocale: Locale('en', 'US'),
+      builder: (context, child) => Scaffold(
+        // Global GestureDetector that will dismiss the keyboard
+        body: GestureDetector(
+          onTap: () {
+            KeyboardUtils.hideKeyboard(context);
+          },
+          child: child,
+        ),
+      ),
     ),
   );
 }

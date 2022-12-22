@@ -1,6 +1,7 @@
 # Luffy
 
-## create
+## get_cli
+### create
 ```
 get create project
 get create page:splash
@@ -10,6 +11,11 @@ get create view:outgoing on home
 
 get create controller:incoming on home
 get create controller:outgoing on home
+```
+
+### internationalization
+```
+get generate locales assets/locales
 ```
 
 ## dependencies
@@ -39,3 +45,15 @@ android/app/src/main/AndroidManifest.xml
 </manifest>
 ```
 
+## 点击空白处隐藏键盘
+```dart
+builder: (context, child) => Scaffold(
+  // Global GestureDetector that will dismiss the keyboard
+  body: GestureDetector(
+    onTap: () {
+      KeyboardUtils.hideKeyboard(context);
+    },
+    child: child,
+  ),
+),
+```

@@ -1,15 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../controllers/profile_controller.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<ProfileController>();
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
         title: const Text('Navigation Drawer'),
         backgroundColor: const Color(0xff764abc),
+        centerTitle: true,
+        actions: [
+          GetBuilder<ProfileController>(
+            // init: controller,
+            builder: (controller) {
+              return IconButton(
+                onPressed: () => controller.toggleDarkMode(),
+                icon: Icon(
+                  controller.isDarkMode ? Icons.dark_mode : Icons.light_mode,
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),

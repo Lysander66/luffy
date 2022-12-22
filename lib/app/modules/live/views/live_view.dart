@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:luffy/generated/locales.g.dart';
 
 import '../controllers/live_controller.dart';
 
@@ -21,10 +22,26 @@ class LiveView extends StatelessWidget {
                 onPressed: () {
                   controller.foo();
                 },
-                child: Text('点击')),
-            SizedBox(
-              height: 50,
-            ),
+                child: Text('weather')),
+            SizedBox(height: 50),
+            Text(LocaleKeys.buttons_login.tr),
+            Text(LocaleKeys.buttons_sign_in.tr),
+            Text(LocaleKeys.buttons_logout.tr),
+            Text(LocaleKeys.buttons_sign_in_fb.tr),
+            Text(LocaleKeys.buttons_sign_in_google.tr),
+            Text(LocaleKeys.buttons_sign_in_apple.tr),
+            SizedBox(height: 50),
+            ElevatedButton(
+                onPressed: () {
+                  controller.updateLocale('en', 'US');
+                },
+                child: Text('英文')),
+            SizedBox(height: 50),
+            ElevatedButton(
+                onPressed: () {
+                  controller.updateLocale('zh', 'CN');
+                },
+                child: Text('中文')),
           ],
         ),
       ),
