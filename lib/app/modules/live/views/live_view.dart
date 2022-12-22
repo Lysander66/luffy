@@ -3,21 +3,29 @@ import 'package:get/get.dart';
 
 import '../controllers/live_controller.dart';
 
-class LiveView extends GetView<LiveController> {
+class LiveView extends StatelessWidget {
   const LiveView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<LiveController>();
     return Scaffold(
       appBar: AppBar(
         title: const Text('ChatView'),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: TextField(
-          decoration: InputDecoration(
-              labelText: 'Find contact',
-              labelStyle: TextStyle(fontWeight: FontWeight.bold)),
+      body: Center(
+        child: Column(
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  controller.foo();
+                },
+                child: Text('点击')),
+            SizedBox(
+              height: 50,
+            ),
+          ],
         ),
       ),
     );

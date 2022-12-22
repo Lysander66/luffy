@@ -6,6 +6,7 @@ class Log {
       stackTraceBeginIndex: 5,
       methodCount: 1,
     )),
+    level: Level.info,
   );
 
   static void v(dynamic message) {

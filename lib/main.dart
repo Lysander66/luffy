@@ -6,7 +6,9 @@ import 'app/binding/binding.dart';
 import 'app/routes/app_pages.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
+
   runApp(
     GetMaterialApp(
       title: "Application",

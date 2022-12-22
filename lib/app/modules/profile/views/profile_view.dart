@@ -1,34 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:luffy/util/logger/log.dart';
-
-import '../controllers/profile_controller.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<ProfileController>();
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: const Text('Navigation Drawer'),
         backgroundColor: const Color(0xff764abc),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            ElevatedButton(
-                onPressed: () {
-                  controller.foo();
-                },
-                child: Text('点击')),
-            SizedBox(
-              height: 50,
-            ),
-          ],
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: TextField(
+          decoration: InputDecoration(
+              labelText: 'Find contact',
+              labelStyle: TextStyle(fontWeight: FontWeight.bold)),
         ),
       ),
       drawer: Container(
