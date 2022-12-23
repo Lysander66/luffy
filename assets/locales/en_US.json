@@ -1,4 +1,8 @@
 {
+  "language":{
+    "english":"English",
+    "chinese":"Simplified Chinese"
+  },
   "buttons":{
     "login":"Login",
     "sign_in":"Sign-in",

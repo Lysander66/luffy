@@ -1,4 +1,8 @@
 {
+  "language":{
+    "english":"英语",
+    "chinese":"中文简体"
+  },
   "buttons":{
     "login":"登录",
     "sign_in":"注册",

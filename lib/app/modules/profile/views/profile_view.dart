@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:luffy/generated/locales.g.dart';
 
 import '../controllers/profile_controller.dart';
 
@@ -9,6 +10,7 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<ProfileController>();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Navigation Drawer'),
@@ -16,24 +18,59 @@ class ProfileView extends StatelessWidget {
         centerTitle: true,
         actions: [
           GetBuilder<ProfileController>(
-            // init: controller,
+            init: controller,
             builder: (controller) {
               return IconButton(
-                onPressed: () => controller.toggleDarkMode(),
+                onPressed: () => controller
+                    .toggleDarkMode(!controller.globalConfig.isDarkMode),
                 icon: Icon(
-                  controller.isDarkMode ? Icons.dark_mode : Icons.light_mode,
+                  controller.globalConfig.isDarkMode
+                      ? Icons.dark_mode
+                      : Icons.light_mode,
                 ),
               );
             },
           ),
         ],
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: TextField(
-          decoration: InputDecoration(
-              labelText: 'Find contact',
-              labelStyle: TextStyle(fontWeight: FontWeight.bold)),
+      body: Center(
+        child: Column(
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                controller.foo();
+              },
+              child: Text('weather'),
+            ),
+            SizedBox(height: 50),
+            Text(LocaleKeys.buttons_login.tr),
+            Text(LocaleKeys.buttons_sign_in.tr),
+            Text(LocaleKeys.buttons_logout.tr),
+            Text(LocaleKeys.buttons_sign_in_fb.tr),
+            Text(LocaleKeys.buttons_sign_in_google.tr),
+            Text(LocaleKeys.buttons_sign_in_apple.tr),
+            SizedBox(height: 50),
+            GetBuilder<ProfileController>(
+              builder: (controller) {
+                return DropdownButton(
+                  items: [
+                    DropdownMenuItem(
+                      value: 'en_US',
+                      child: Text(LocaleKeys.language_english.tr),
+                    ),
+                    DropdownMenuItem(
+                      value: 'zh_CN',
+                      child: Text(LocaleKeys.language_chinese.tr),
+                    ),
+                  ],
+                  value: controller.globalConfig.language,
+                  onChanged: (value) {
+                    controller.updateLocale(value ?? '');
+                  },
+                );
+              },
+            ),
+          ],
         ),
       ),
       drawer: Container(
@@ -44,7 +81,7 @@ class ProfileView extends StatelessWidget {
             padding: EdgeInsets.zero,
             children: [
               const UserAccountsDrawerHeader(
-                decoration: BoxDecoration(color: const Color(0xff764abc)),
+                decoration: BoxDecoration(color: Color(0xff764abc)),
                 accountName: Text(
                   "Pinkesh Darji",
                   style: TextStyle(
@@ -81,7 +118,6 @@ class ProfileView extends StatelessWidget {
                 icon: Icon(
                   Icons.info,
                 ),
-                child: Text('About app'),
                 applicationIcon: Icon(
                   Icons.local_play,
                 ),
@@ -91,6 +127,7 @@ class ProfileView extends StatelessWidget {
                 aboutBoxChildren: [
                   ///Content goes here...
                 ],
+                child: Text('About app'),
               ),
             ],
           ),
