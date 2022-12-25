@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
       onWillPop: () async {
         if (DateTime.now().difference(_lastExitTime) >= Duration(seconds: 1)) {
           final snack = SnackBar(
-            content: Text("Press the back button again to exit the app"),
+            content: Text('Press the back button again to exit the app'),
             duration: Duration(seconds: 2),
           );
           ScaffoldMessenger.of(context).showSnackBar(snack);

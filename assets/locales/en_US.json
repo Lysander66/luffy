@@ -1,4 +1,8 @@
 {
+  "environment":{
+    "development":"development",
+    "production":"production"
+  },
   "language":{
     "english":"English",
     "chinese":"Simplified Chinese"

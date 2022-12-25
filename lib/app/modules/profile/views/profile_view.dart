@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:luffy/app/common/constant/env.dart';
 import 'package:luffy/generated/locales.g.dart';
 
 import '../controllers/profile_controller.dart';
@@ -38,7 +39,7 @@ class ProfileView extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-                controller.foo();
+                controller.weather();
               },
               child: Text('weather'),
             ),
@@ -49,6 +50,28 @@ class ProfileView extends StatelessWidget {
             Text(LocaleKeys.buttons_sign_in_fb.tr),
             Text(LocaleKeys.buttons_sign_in_google.tr),
             Text(LocaleKeys.buttons_sign_in_apple.tr),
+            SizedBox(height: 50),
+            GetBuilder<ProfileController>(
+              builder: (controller) {
+                return DropdownButton(
+                  items: [
+                    DropdownMenuItem(
+                      value: Environment.dev,
+                      child: Text(LocaleKeys.environment_development.tr),
+                    ),
+                    DropdownMenuItem(
+                      value: Environment.prod,
+                      child: Text(LocaleKeys.environment_production.tr),
+                    ),
+                  ],
+                  value: controller.env,
+                  onChanged: (value) {
+                    controller.switchEnv(value!);
+                    // controller.updateLocale(value ?? '');
+                  },
+                );
+              },
+            ),
             SizedBox(height: 50),
             GetBuilder<ProfileController>(
               builder: (controller) {
@@ -83,13 +106,13 @@ class ProfileView extends StatelessWidget {
               const UserAccountsDrawerHeader(
                 decoration: BoxDecoration(color: Color(0xff764abc)),
                 accountName: Text(
-                  "Pinkesh Darji",
+                  'Pinkesh Darji',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 accountEmail: Text(
-                  "pinkesh.earth@gmail.com",
+                  'pinkesh.earth@gmail.com',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),

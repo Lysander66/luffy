@@ -1,8 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:luffy/util/logger/log.dart';
 import 'package:path_provider/path_provider.dart';
+
+import '../../../common/logger.dart';
 
 class IncomingView extends StatefulWidget {
   const IncomingView({Key? key}) : super(key: key);
@@ -39,7 +40,7 @@ class _IncomingViewState extends State<IncomingView> {
         }
       }
     } catch (err, stack) {
-      Log.e('Cannot get download folder path');
+      vlog.e('Cannot get download folder path');
     }
     return directory?.path;
   }
@@ -47,16 +48,16 @@ class _IncomingViewState extends State<IncomingView> {
   static Future<String> createFolderInAppDocDir(String folderName) async {
     final Directory appDocDir = await getApplicationDocumentsDirectory();
     // final Directory appDocDirFolder = Directory('${appDocDir.path}/$folderName/');
-    Log.d('appDocDir ${appDocDir.path}');
+    vlog.d('appDocDir ${appDocDir.path}');
 
     final Directory appDocDirFolder = Directory(folderName);
     if (await appDocDirFolder.exists()) {
-      Log.d('exists ${appDocDirFolder.path}');
+      vlog.d('exists ${appDocDirFolder.path}');
       return appDocDirFolder.path;
     }
     final Directory appDocDirNewFolder =
         await appDocDirFolder.create(recursive: true);
-    Log.i('create ${appDocDirNewFolder.path}');
+    vlog.i('create ${appDocDirNewFolder.path}');
     return appDocDirNewFolder.path;
   }
 

@@ -24,14 +24,16 @@ get generate locales assets/locales
 ## dependencies
 
 ```
-flutter pub add logger
-flutter pub add http
-flutter pub add get_storage
-flutter pub add path_provider
 flutter pub add json_annotation
 flutter pub add json_serializable --dev
 flutter pub add build_runner --dev
+flutter pub add get_storage
+flutter pub add path_provider
+flutter pub add flutter_dotenv
+flutter pub add http
 ```
+
+- [http](https://docs.flutter.dev/cookbook/networking/fetch-data)
 
 - [Generating code for nested classes](https://docs.flutter.dev/development/data-and-backend/json)
 
@@ -77,4 +79,31 @@ builder: (context, child) => Scaffold(
     child: child,
   ),
 ),
+```
+
+## --dart-define
+
+- [Using --dart-define in Flutter](https://dartcode.org/docs/using-dart-define-in-flutter/)
+
+```
+flutter run --dart-define=API_KEY=example_key --dart-define=APP_NAME=example_app
+```
+
+```dart
+print(const String.fromEnvironment('API_KEY'));
+print(const String.fromEnvironment('APP_NAME'));
+```
+
+`flutter run --dart-define=AppEnvironment=prod`
+
+## flutter_dotenv
+
+一般用于存放账号密码等敏感信息
+
+- [flutter_dotenv](https://pub.dev/packages/flutter_dotenv)
+
+Remember to add the .env file as an entry in your .gitignore if it isn't already unless you want it included in your version control.
+
+```
+*.env
 ```

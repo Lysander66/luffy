@@ -11,6 +11,8 @@ class AppTranslation {
 
 class LocaleKeys {
   LocaleKeys._();
+  static const environment_development = 'environment_development';
+  static const environment_production = 'environment_production';
   static const language_english = 'language_english';
   static const language_chinese = 'language_chinese';
   static const buttons_login = 'buttons_login';
@@ -23,6 +25,8 @@ class LocaleKeys {
 
 class Locales {
   static const zh_CN = {
+    'environment_development': '开发环境',
+    'environment_production': '正式环境',
     'language_english': '英语',
     'language_chinese': '中文简体',
     'buttons_login': '登录',
@@ -33,6 +37,8 @@ class Locales {
     'buttons_sign_in_apple': '用 Apple 登录',
   };
   static const en_US = {
+    'environment_development': 'development',
+    'environment_production': 'production',
     'language_english': 'English',
     'language_chinese': 'Simplified Chinese',
     'buttons_login': 'Login',

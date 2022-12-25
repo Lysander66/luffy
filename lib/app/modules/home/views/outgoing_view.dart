@@ -9,7 +9,7 @@ class OutgoingView extends StatefulWidget {
 
 class _OutgoingViewState extends State<OutgoingView>
     with AutomaticKeepAliveClientMixin<OutgoingView> {
-  final items = List<String>.generate(100, (i) => "Call $i");
+  final items = List<String>.generate(100, (i) => 'Call $i');
 
   @override
   Widget build(BuildContext context) {
