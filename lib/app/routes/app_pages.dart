@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../modules/screens.dart';
+import '../ui/screens.dart';
 
 part 'app_routes.dart';
 
