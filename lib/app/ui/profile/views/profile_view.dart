@@ -37,20 +37,6 @@ class ProfileView extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            ElevatedButton(
-              onPressed: () {
-                controller.weather();
-              },
-              child: Text('weather'),
-            ),
-            SizedBox(height: 50),
-            Text(LocaleKeys.buttons_login.tr),
-            Text(LocaleKeys.buttons_sign_in.tr),
-            Text(LocaleKeys.buttons_logout.tr),
-            Text(LocaleKeys.buttons_sign_in_fb.tr),
-            Text(LocaleKeys.buttons_sign_in_google.tr),
-            Text(LocaleKeys.buttons_sign_in_apple.tr),
-            SizedBox(height: 50),
             GetBuilder<ProfileController>(
               builder: (controller) {
                 return DropdownButton(
@@ -93,6 +79,33 @@ class ProfileView extends StatelessWidget {
                 );
               },
             ),
+            SizedBox(height: 50),
+            SizedBox(
+              width: 200,
+              child: GetBuilder<ProfileController>(
+                id: 'input_host',
+                builder: (controller) {
+                  return TextFormField(
+                    initialValue: controller.host,
+                    decoration: InputDecoration(
+                      labelText: 'host',
+                      labelStyle: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    onChanged: (value) {
+                      controller.updateHost(value);
+                    },
+                  );
+                },
+              ),
+            ),
+            SizedBox(height: 50),
+            ElevatedButton(
+              onPressed: () {
+                controller.weather();
+              },
+              child: Text('weather'),
+            ),
+            SizedBox(height: 50),
           ],
         ),
       ),

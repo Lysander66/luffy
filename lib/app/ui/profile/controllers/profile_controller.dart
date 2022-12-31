@@ -11,6 +11,7 @@ import '../../../model/v1/weather.dart';
 class ProfileController extends GetxController {
   late String env;
   late GlobalConfig globalConfig;
+  String host = 'ws://192.168.1.6:8080';
 
   @override
   void onInit() {
@@ -40,7 +41,7 @@ class ProfileController extends GetxController {
 
     globalConfig.language = language;
     update();
-    Get.snackbar("Language", language, duration: Duration(seconds: 1));
+    Get.snackbar('Language', language, duration: Duration(seconds: 1));
 
     CommonCache.setGlobalConfig(globalConfig);
   }
@@ -51,7 +52,7 @@ class ProfileController extends GetxController {
     }
     this.env = env;
     update();
-    Get.snackbar("Env", env, duration: Duration(seconds: 1));
+    Get.snackbar('Env', env, duration: Duration(seconds: 1));
 
     CommonCache.setEnvironment(env);
     initHttpClient();
@@ -75,5 +76,10 @@ class ProfileController extends GetxController {
     //     .get('http://www.nmc.cn/rest/weather?stationid=59758');
     // var w2 = WeatherResp.fromJson(jsonDecode(resp2.body)['data']);
     // vlog.i(w2.air);
+  }
+
+  updateHost(String host) {
+    this.host = host;
+    update(['input_host']);
   }
 }

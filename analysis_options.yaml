@@ -2,7 +2,7 @@ include: package:flutter_lints/flutter.yaml
 linter:
   rules:
     prefer_single_quotes: true
-    unawaited_futures: true
+    unawaited_futures: false
     unnecessary_brace_in_string_interps: false
     prefer_const_constructors: false
     prefer_const_literals_to_create_immutables: false
