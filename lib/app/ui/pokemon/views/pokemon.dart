@@ -40,7 +40,7 @@ class _PokemonViewState extends State<PokemonView> {
       var dist = _scrollController.position.maxScrollExtent -
           _scrollController.position.pixels;
       if (!isLoading &&
-          dist < 300 &&
+          dist < 5 &&
           _scrollController.position.maxScrollExtent != 0) {
         getMore();
       }

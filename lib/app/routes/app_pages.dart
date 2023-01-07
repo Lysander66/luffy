@@ -23,10 +23,6 @@ class AppPages {
       page: () => const LiveView(),
     ),
     GetPage(
-      name: _Paths.profile,
-      page: () => const ProfileView(),
-    ),
-    GetPage(
       name: _Paths.pokemon,
       page: () => const PokemonView(),
       children: [
@@ -35,6 +31,10 @@ class AppPages {
           page: () => const PokemonDetailView(),
         )
       ],
+    ),
+    GetPage(
+      name: _Paths.profile,
+      page: () => const ProfileView(),
     ),
   ];
 }

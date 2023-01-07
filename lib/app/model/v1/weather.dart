@@ -6,6 +6,7 @@ part 'weather.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class WeatherResp {
+  int code = 0;
   late WeatherRespReal real;
   late WeatherRespPredict predict;
   late WeatherRespAir air;
@@ -26,7 +27,7 @@ class WeatherResp {
 @JsonSerializable(explicitToJson: true)
 class WeatherRespReal {
   late WeatherRespRealStation station;
-  @JsonKey(name: "publish_time")
+  @JsonKey(name: 'publish_time')
   late String publishTime;
   late WeatherRespRealWeather weather;
   late WeatherRespRealWind wind;
@@ -140,7 +141,7 @@ class WeatherRespRealWarn {
 @JsonSerializable(explicitToJson: true)
 class WeatherRespPredict {
   late WeatherRespPredictStation station;
-  @JsonKey(name: "publish_time")
+  @JsonKey(name: 'publish_time')
   late String publishTime;
   late List<WeatherRespPredictDetail> detail;
 

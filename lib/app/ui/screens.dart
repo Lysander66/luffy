@@ -1,4 +1,5 @@
 export 'home/views/home_view.dart';
+export 'home/views/weather_view.dart';
 export 'live/views/live_view.dart';
 export 'pokemon/views/pokemon.dart';
 export 'pokemon/views/pokemon.dart';

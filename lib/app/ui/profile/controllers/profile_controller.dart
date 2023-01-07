@@ -4,10 +4,8 @@ import 'package:get/get.dart';
 import '../../../cache/common.dart';
 import '../../../common/config_service.dart';
 import '../../../common/logger.dart';
-import '../../../dao/config.dart';
 import '../../../dao/define.dart';
 import '../../../model/global_config.dart';
-import '../../../model/v1/weather.dart';
 
 class ProfileController extends GetxController {
   late String env;
@@ -57,26 +55,6 @@ class ProfileController extends GetxController {
 
     CommonCache.setEnvironment(env);
     initHttpClient();
-  }
-
-  weather() async {
-    var response = await weatherClient
-        .R()
-        .setQueryParam('stationid', '59758')
-        .get(WeatherApi.weather);
-
-    var w = WeatherResp.fromJson(response.data);
-    vlog.i(w.real.weather);
-    vlog.i(w.predict.detail.length);
-    Get.defaultDialog(
-        title: 'weather', content: Text(w.real.weather.toString()));
-
-    // await Future.delayed(Duration(seconds: 1));
-    // var resp2 = await defaultClient
-    //     .R()
-    //     .get('http://www.nmc.cn/rest/weather?stationid=59758');
-    // var w2 = WeatherResp.fromJson(jsonDecode(resp2.body)['data']);
-    // vlog.i(w2.air);
   }
 
   updateHost(String host) {

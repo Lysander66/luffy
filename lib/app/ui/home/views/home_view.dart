@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../live/views/live_view.dart';
 import 'incoming_view.dart';
 import 'outgoing_view.dart';
+import 'weather_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -10,6 +11,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const tabs = [
+      WeatherView(),
       IncomingView(),
       OutgoingView(),
       LiveView(),
@@ -24,6 +26,7 @@ class HomeView extends StatelessWidget {
             children: [
               TabBar(
                 tabs: [
+                  Tab(text: 'Weather'),
                   Tab(text: 'Incoming'),
                   Tab(text: 'Outgoing'),
                   Tab(text: 'Live'),
