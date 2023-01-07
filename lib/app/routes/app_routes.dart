@@ -3,16 +3,20 @@ part of 'app_pages.dart';
 
 abstract class Routes {
   Routes._();
-  static const HOME = _Paths.HOME;
-  static const SPLASH = _Paths.SPLASH;
-  static const PROFILE = _Paths.PROFILE;
-  static const LIVE = _Paths.LIVE;
+  static const home = _Paths.home;
+  static const splash = _Paths.splash;
+  static const profile = _Paths.profile;
+  static const live = _Paths.live;
+  static const pokemon = _Paths.pokemon;
+  static const pokemonDetail = _Paths.pokemonDetail;
 }
 
 abstract class _Paths {
   _Paths._();
-  static const HOME = '/home';
-  static const SPLASH = '/splash';
-  static const PROFILE = '/profile';
-  static const LIVE = '/live';
+  static const home = '/home';
+  static const splash = '/splash';
+  static const profile = '/profile';
+  static const live = '/live';
+  static const pokemon = '/pokemon';
+  static const pokemonDetail = '/detail';
 }

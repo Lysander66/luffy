@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../live/views/live_view.dart';
 import 'incoming_view.dart';
 import 'outgoing_view.dart';
 
@@ -8,8 +9,14 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const tabs = [
+      IncomingView(),
+      OutgoingView(),
+      LiveView(),
+    ];
+
     return DefaultTabController(
-      length: 2,
+      length: tabs.length,
       child: Scaffold(
         appBar: AppBar(
           flexibleSpace: Column(
@@ -19,16 +26,14 @@ class HomeView extends StatelessWidget {
                 tabs: [
                   Tab(text: 'Incoming'),
                   Tab(text: 'Outgoing'),
+                  Tab(text: 'Live'),
                 ],
               )
             ],
           ),
         ),
         body: TabBarView(
-          children: [
-            IncomingView(),
-            OutgoingView(),
-          ],
+          children: tabs,
         ),
       ),
     );

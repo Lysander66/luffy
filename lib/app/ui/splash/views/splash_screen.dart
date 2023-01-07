@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../home/views/home_view.dart';
-import '../../live/views/live_view.dart';
-import '../../profile/views/profile_view.dart';
+import '../../screens.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -42,14 +40,14 @@ class _SplashScreenState extends State<SplashScreen> {
           index: _selectedIndex,
           children: [
             HomeView(),
-            LiveView(),
+            PokemonView(),
             ProfileView(),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(Icons.camera), label: 'Live'),
+            BottomNavigationBarItem(icon: Icon(Icons.camera), label: 'Pokemon'),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
           ],
           onTap: _onItemTapped,

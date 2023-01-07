@@ -7,25 +7,32 @@ import 'package:summer/summer.dart' as summer;
 import '../cache/common.dart';
 import '../common/constant/env.dart';
 import '../common/logger.dart';
+import 'config.dart';
 
-late summer.Client defaultClient;
-late summer.Client nmcClient;
+final defaultClient = summer.Client();
+late summer.Client pokemonClient;
+late summer.Client weatherClient;
 
 void initHttpClient() {
   final env = CommonCache.getEnvironment();
 
   // dev
-  var nmcHost = 'http://www.nmc.cn';
+  var pokemonHost = PokemonApi.hostDev;
+  var weatherHost = WeatherApi.hostDev;
 
   // prod
   if (env != null && env == Environment.prod) {
-    nmcHost = 'http://www.nmc.cn';
+    pokemonHost = PokemonApi.hostProd;
+    weatherHost = WeatherApi.hostProd;
   }
   vlog.i('initHttpClient $env');
 
-  defaultClient = summer.Client();
-  nmcClient = summer.Client(
-    baseURL: nmcHost,
+  pokemonClient = summer.Client(
+    baseURL: pokemonHost,
+  );
+
+  weatherClient = summer.Client(
+    baseURL: weatherHost,
     afterResponse: onAfterResponse,
   );
 }
@@ -45,8 +52,4 @@ Map<String, dynamic> onAfterResponse(http.Response response) {
     return {};
   }
   return resp['data'];
-}
-
-abstract class ApiConfig {
-  static const weather = '/rest/weather';
 }

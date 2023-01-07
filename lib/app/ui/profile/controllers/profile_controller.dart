@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../../cache/common.dart';
 import '../../../common/config_service.dart';
 import '../../../common/logger.dart';
+import '../../../dao/config.dart';
 import '../../../dao/define.dart';
 import '../../../model/global_config.dart';
 import '../../../model/v1/weather.dart';
@@ -59,12 +60,12 @@ class ProfileController extends GetxController {
   }
 
   weather() async {
-    var resp = await nmcClient
+    var response = await weatherClient
         .R()
         .setQueryParam('stationid', '59758')
-        .get(ApiConfig.weather);
+        .get(WeatherApi.weather);
 
-    var w = WeatherResp.fromJson(resp.data);
+    var w = WeatherResp.fromJson(response.data);
     vlog.i(w.real.weather);
     vlog.i(w.predict.detail.length);
     Get.defaultDialog(

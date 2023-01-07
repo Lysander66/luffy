@@ -198,9 +198,9 @@ class _LiveViewState extends State<LiveView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('WebRTC'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('WebRTC'),
+      // ),
       body: Stack(
         children: [
           SizedBox(

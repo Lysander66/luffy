@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
@@ -59,6 +60,8 @@ class Client {
       resp.body = response.body;
       if (afterResponse != null) {
         resp.data = afterResponse!(response);
+      } else {
+        resp.data = jsonDecode(response.body);
       }
     } on SocketException {
       logger.e('No Internet connection 😑');
