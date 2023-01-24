@@ -54,7 +54,7 @@ class ProfileController extends GetxController {
     Get.snackbar('Env', env, duration: Duration(seconds: 1));
 
     CommonCache.setEnvironment(env);
-    initHttpClient();
+    initHttpClient(env);
   }
 
   updateHost(String host) {

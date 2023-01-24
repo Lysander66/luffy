@@ -12,7 +12,7 @@ class DI {
 
     await GetStorage.init();
     await CommonCache.setEnvironment(env.isNotEmpty ? env : Environment.dev);
-    initHttpClient();
+    initHttpClient(env.isNotEmpty ? env : Environment.dev);
 
     final fileName = envFileName(env);
     if (fileName.isNotEmpty) {

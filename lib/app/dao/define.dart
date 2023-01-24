@@ -4,37 +4,19 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:summer/summer.dart' as summer;
 
-import '../cache/common.dart';
-import '../common/constant/env.dart';
 import '../common/logger.dart';
-import 'config.dart';
+import 'music_dao.dart';
+import 'pokemon_dao.dart';
+import 'weather_dao.dart';
 
 final defaultClient = summer.Client();
-late summer.Client pokemonClient;
-late summer.Client weatherClient;
 
-void initHttpClient() {
-  final env = CommonCache.getEnvironment();
+void initHttpClient(String env) {
+  WeatherDao.init(env);
+  PokemonDao.init(env);
+  MusicDao.init(env);
 
-  // dev
-  var pokemonHost = PokemonApi.hostDev;
-  var weatherHost = WeatherApi.hostDev;
-
-  // prod
-  if (env != null && env == Environment.prod) {
-    pokemonHost = PokemonApi.hostProd;
-    weatherHost = WeatherApi.hostProd;
-  }
   vlog.i('initHttpClient $env');
-
-  pokemonClient = summer.Client(
-    baseURL: pokemonHost,
-  );
-
-  weatherClient = summer.Client(
-    baseURL: weatherHost,
-    afterResponse: onAfterResponse,
-  );
 }
 
 Map<String, dynamic> onAfterResponse(http.Response response) {

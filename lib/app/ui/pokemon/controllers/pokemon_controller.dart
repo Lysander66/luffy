@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../../dao/config.dart';
-import '../../../dao/define.dart';
+import '../../../dao/pokemon_dao.dart';
 import '../../../model/v1/pokemon.dart';
 
 class PokemonController extends GetxController {
@@ -19,12 +18,8 @@ class PokemonController extends GetxController {
   // https://pokeapi.co/api/v2/pokemon
   getPokemonList() async {
     pokemonList = []; //clear
-    final offset = (page - 1) * limit;
-    final response = await pokemonClient
-        .R()
-        .setQueryParam('offset', offset.toString())
-        .setQueryParam('limit', limit.toString())
-        .get(PokemonApi.pokemonList);
+
+    final response = await PokemonDao.getPokemonList((page - 1) * limit, limit);
 
     for (var v in (response.data['results'] as List<dynamic>)) {
       final url = v['url'] as String;
@@ -42,10 +37,7 @@ class PokemonController extends GetxController {
   }
 
   getPokemon(String id) async {
-    final response =
-        await pokemonClient.R().setPathParam('id', id).get(PokemonApi.pokemon);
-
-    pokemon = Pokemon.fromJson(response.data);
+    pokemon = await PokemonDao.getPokemon(id);
     update();
   }
 

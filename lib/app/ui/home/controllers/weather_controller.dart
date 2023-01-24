@@ -2,8 +2,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../../../common/logger.dart';
-import '../../../dao/config.dart';
-import '../../../dao/define.dart';
+import '../../../dao/weather_dao.dart';
 import '../../../model/v1/weather.dart';
 
 class WeatherController extends GetxController {
@@ -22,12 +21,7 @@ class WeatherController extends GetxController {
   }
 
   getWeather() async {
-    var response = await weatherClient
-        .R()
-        .setQueryParam('stationid', city.toString())
-        .get(WeatherApi.weather);
-
-    weather = WeatherResp.fromJson(response.data);
+    weather = await WeatherDao.getWeather(city);
     weather.code = city;
     update();
     vlog.i(weather.real.weather);
