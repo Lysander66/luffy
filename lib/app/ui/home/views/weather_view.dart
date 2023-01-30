@@ -22,7 +22,7 @@ class _WeatherViewState extends State<WeatherView>
   Widget build(BuildContext context) {
     super.build(context);
     return GetBuilder<WeatherController>(builder: (controller) {
-      return controller.weather.code == 0
+      return !controller.flag
           ? Center(
               child: CircularProgressIndicator(),
             )

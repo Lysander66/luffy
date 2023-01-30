@@ -6,13 +6,14 @@ import '../../../dao/weather_dao.dart';
 import '../../../model/v1/weather.dart';
 
 class WeatherController extends GetxController {
+  bool flag = false;
   int city = 59758;
   WeatherResp weather = WeatherResp();
 
   @override
-  void onInit() {
+  Future<void> onInit() async {
     super.onInit();
-    getWeather();
+    await getWeather();
   }
 
   setCity(int city) {
@@ -22,7 +23,7 @@ class WeatherController extends GetxController {
 
   getWeather() async {
     weather = await WeatherDao.getWeather(city);
-    weather.code = city;
+    flag = true;
     update();
     vlog.i(weather.real.weather);
 

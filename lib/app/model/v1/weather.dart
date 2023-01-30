@@ -6,7 +6,6 @@ part 'weather.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class WeatherResp {
-  int code = 0;
   late WeatherRespReal real;
   late WeatherRespPredict predict;
   late WeatherRespAir air;
