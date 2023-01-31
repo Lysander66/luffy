@@ -6,7 +6,7 @@ import FlutterMacOS
 import Foundation
 
 import flutter_webrtc
-import path_provider_macos
+import path_provider_foundation
 import sqflite
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
